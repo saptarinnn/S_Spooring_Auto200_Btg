@@ -26,7 +26,7 @@
                     href="#">Home</a> --}}
 
                 <a class="flex items-center px-3 py-2 font-medium text-gray-600 bg-gray-100 rounded-lg gap-x-2 hover:text-gray-700 hover:bg-gray-200"
-                    href="#">
+                    href="{{ route('login') }}">
                     <i class='bx bx-user bx-xs'></i>
                     Log in
                 </a>

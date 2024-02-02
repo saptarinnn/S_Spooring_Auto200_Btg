@@ -1,4 +1,7 @@
 <x-guest-layout title="Spooring Auto2000 Bontang">
+    {{-- Navigation --}}
+    <x-navigation />
+
     <div
         class="container flex flex-col items-center justify-center min-h-screen gap-6 px-4 pt-24 pb-10 mx-auto sm:px-6 lg:px-8 lg:justify-between lg:flex-row">
         <div class="max-w-lg">
@@ -46,7 +49,7 @@
 
         <form class="" method="POST" action="">
             @csrf
-            <div class="grid gap-y-4">
+            <div class="grid">
                 <!-- Form Group -->
                 <x-input name="nama" label="Nama Lengkap" />
                 <x-input name="plat" label="Plat Kendaraan" />
@@ -56,10 +59,7 @@
                 <x-input type="date" name="tgl_booking" label="Tanggal Booking" />
                 <!-- End Form Group -->
 
-                <button type="submit"
-                    class="w-full py-2 text-sm font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700">
-                    Booking Spooring
-                </button>
+                <x-button>Booking Spooring</x-button>
             </div>
         </form>
     </x-modal>
@@ -74,15 +74,12 @@
         </div>
 
         <form class="" method="POST" action="">
-            <div class="grid gap-y-4">
+            <div class="grid">
                 <!-- Form Group -->
                 <x-input name="token" label="Token Booking" />
                 <!-- End Form Group -->
 
-                <button type="submit"
-                    class="w-full py-2 text-sm font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700">
-                    Cek Token
-                </button>
+                <x-button>Cari Token</x-button>
             </div>
         </form>
     </x-modal>

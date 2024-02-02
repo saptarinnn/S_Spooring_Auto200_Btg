@@ -6,8 +6,6 @@
 </head>
 
 <body>
-    {{-- Navigation --}}
-    <x-navigation />
 
     {{ $slot }}
 
