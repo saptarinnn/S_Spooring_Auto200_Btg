@@ -1,42 +1,36 @@
-<header class="fixed w-full bg-white">
-    <nav x-data="{ isOpen: false }" class="px-6 py-4 shadow">
-        <div class="container mx-auto lg:items-center lg:justify-between lg:flex">
-            <div class="flex items-center justify-between">
-                <a href="#" class="mx-auto ">
-                    <img class="w-auto h-10 sm:h-12" src="{{ asset('img/logo.png') }}" alt="">
-                </a>
+<header
+    class="fixed z-50 flex flex-wrap w-full py-4 text-sm bg-white shadow lg:text-base sm:justify-start sm:flex-nowrap">
+    <nav class="container relative w-full px-4 mx-auto sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+            <a class="flex-none" href="#" aria-label="Brand">
+                <img class="w-auto h-8 sm:h-10" src="{{ asset('img/logo.png') }}" alt="">
+            </a>
 
-                <!-- Mobile menu button -->
-                <div class="flex items-center lg:hidden">
-                    <button x-cloak @click="isOpen = !isOpen" type="button"
-                        class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
-                        aria-label="toggle menu">
-                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-                        </svg>
+            <div class="sm:hidden">
+                <button type="button"
+                    class="flex items-center justify-center text-sm font-semibold border rounded-lg text-red hs-collapse-toggle w-9 h-9 gap-x-2 border-red/20 hover:border-red/40 disabled:opacity-50 disabled:pointer-events-none"
+                    data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
+                    aria-label="Toggle navigation">
 
-                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+                    <i class='flex-shrink-0 font-medium bx-xs bx bx-menu hs-collapse-open:hidden'></i>
+                    <i class='flex-shrink-0 hidden font-medium bx-xs bx bx-x hs-collapse-open:block'></i>
+
+                </button>
             </div>
+        </div>
+        <div id="navbar-collapse-with-animation"
+            class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block">
+            <div
+                class="flex flex-col mt-5 gap-y-2 gap-x-0 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-5 sm:mt-0 sm:ps-7">
+                {{-- <a class="px-3 py-2 font-medium text-gray-600 rounded-lg hover:text-gray-700 hover:bg-gray-100"
+                    href="#">Home</a> --}}
 
-            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
-                class="absolute inset-x-0 z-20 w-full px-6 py-4 mt-3 transition-all duration-300 ease-in-out bg-white shadow-md lg:bg-transparent lg:dark:bg-transparent lg:shadow-none dark:bg-gray-900 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
-                <a href="#"
-                    class="block px-3 py-2 text-sm font-medium text-gray-600 rounded-lg dark:text-gray-200 hover:bg-gray-100 lg:mx-2">Home</a>
-
-                <a href="#"
-                    class="block px-3 py-2 mt-2 text-sm font-medium text-gray-600 transition-colors duration-300 bg-gray-100 rounded-lg sm:mt-0 dark:text-gray-200 hover:bg-gray-100 lg:mx-2">
-                    <i class=' bx-xs bx bx-user'></i>
-                    Sign In
+                <a class="flex items-center px-3 py-2 font-medium text-gray-600 bg-gray-100 rounded-lg gap-x-2 hover:text-gray-700 hover:bg-gray-200"
+                    href="#">
+                    <i class='bx bx-user bx-xs'></i>
+                    Log in
                 </a>
             </div>
-
         </div>
     </nav>
 </header>
