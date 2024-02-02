@@ -1,4 +1,4 @@
-<x-app-layout title="Spooring Auto2000 Bontang">
+<x-guest-layout title="Spooring Auto2000 Bontang">
     <div
         class="container flex flex-col items-center justify-center min-h-screen gap-6 px-4 pt-24 pb-10 mx-auto sm:px-6 lg:px-8 lg:justify-between lg:flex-row">
         <div class="max-w-lg">
@@ -87,4 +87,4 @@
         </form>
     </x-modal>
 
-</x-app-layout>
+</x-guest-layout>
