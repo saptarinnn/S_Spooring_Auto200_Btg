@@ -2,7 +2,7 @@
     class="fixed z-50 flex flex-wrap w-full py-4 text-sm bg-white shadow lg:text-base sm:justify-start sm:flex-nowrap">
     <nav class="container relative w-full px-4 mx-auto sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
-            <a class="flex-none" href="#" aria-label="Brand">
+            <a class="flex-none" href="/" aria-label="Brand">
                 <img class="w-auto h-8 sm:h-10" src="{{ asset('img/logo.png') }}" alt="">
             </a>
 
