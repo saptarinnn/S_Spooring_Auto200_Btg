@@ -45,7 +45,7 @@
             </p>
         </div>
 
-        <form class="" method="POST" action="">
+        <form class="" method="GET" action="{{ route('success-booking') }}">
             @csrf
             <div class="grid">
                 <!-- Form Group -->
