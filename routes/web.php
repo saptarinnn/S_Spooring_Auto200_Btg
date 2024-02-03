@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', fn () => view('home'));
-
-Route::get('login', fn () => view('auth.login'))->name('login');
+Route::get('login', fn () => view('guest.login'))->name('login');
+Route::get('detail-spooring', fn () => view('guest.detail-spooring'))->name('detail-spooring');

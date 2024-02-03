@@ -19,14 +19,12 @@
                 booking sistem ini juga digunakan untuk monitoring proses dari spooring.</p>
 
             <div class="flex flex-col gap-2 mt-10 md:flex-row">
-                <button type="button"
-                    class="w-full px-6 py-2.5 text-sm font-medium leading-5 text-center text-white capitalize bg-red-600 rounded-lg hover:bg-red-500 lg:mx-0 lg:w-auto focus:outline-none"
-                    data-hs-overlay="#booking-spooring">
-                    Booking Spooring</button>
-                <button type="button"
-                    class="w-full px-6 py-2.5 text-sm font-medium leading-5 text-center text-gray-700 capitalize bg-gray-200 rounded-lg hover:bg-gray-100 lg:mx-0 lg:w-auto focus:outline-none"
-                    data-hs-overlay="#cek-status-spooring">
-                    Cek Status Spooring</button>
+                <x-button-modal class="text-white bg-red-600 hover:bg-red-500" id="#booking-spooring">
+                    Booking Spooring
+                </x-button-modal>
+                <x-button-modal class="text-gray-700 bg-gray-200 hover:bg-gray-100" id="#cek-status-spooring">
+                    Cek Status Spooring
+                </x-button-modal>
             </div>
         </div>
 
@@ -73,7 +71,8 @@
             </p>
         </div>
 
-        <form class="" method="POST" action="">
+        <form class="" method="GET" action="{{ route('detail-spooring') }}">
+            @csrf
             <div class="grid">
                 <!-- Form Group -->
                 <x-input name="token" label="Token Booking" />
