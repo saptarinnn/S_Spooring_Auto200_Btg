@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="mt-8">
-                        <form class="" method="POST" action="">
+                        <form class="" method="GET" action="{{ route('dashboard') }}">
                             @csrf
 
                             <x-input name="username" label="Username" />
