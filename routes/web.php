@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,6 @@ Route::get('detail-spooring', fn () => view('guest.detail-spooring'))->name('det
 Route::get('success-booking', fn () => view('guest.success-booking'))->name('success-booking');
 
 Route::get('dashboard', fn () => view('master.dashboard'))->name('dashboard');
+
+# Users
+Route::get('users', [UserController::class], 'index');

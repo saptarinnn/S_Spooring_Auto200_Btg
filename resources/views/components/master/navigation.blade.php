@@ -7,11 +7,13 @@
             </a>
         </div>
 
-        <div class="flex items-center justify-end w-full gap-4 ms-auto">
-            <div class="mt-1 lg:hidden">
-                <button type="button" class="text-gray-500" data-hs-overlay="#application-sidebar"
-                    aria-controls="application-sidebar" aria-label="Toggle navigation">
-                    <i class="bx bx-menu bx-sm"></i>
+        <div class="flex items-center justify-end w-full gap-2 ms-auto">
+            <div class="lg:hidden">
+                <button type="button"
+                    class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+                    data-hs-overlay="#application-sidebar" aria-controls="application-sidebar"
+                    aria-label="Toggle navigation">
+                    <i class="text-xl font-medium bx bx-menu "></i>
                 </button>
             </div>
 
@@ -19,8 +21,8 @@
 
                 <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
                     <button id="hs-dropdown-with-header" type="button"
-                        class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent bg-gray-100 text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
-                        <i class="bx bx-user bx-sm"></i>
+                        class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm rounded-full border border-transparent bg-gray-100 text-gray-500 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none">
+                        <i class="text-xl font-medium bx bx-user"></i>
                     </button>
 
                     <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2"
