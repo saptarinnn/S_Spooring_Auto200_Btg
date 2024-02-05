@@ -1,5 +1,5 @@
 <x-guest-layout title="Login | Spooring Auto2000 Bontang">
-    <div class="bg-white dark:bg-gray-900">
+    <div class="bg-white">
         <div class="flex justify-center h-screen">
             {{-- Background --}}
             <div class="hidden bg-cover lg:block lg:w-2/3"
