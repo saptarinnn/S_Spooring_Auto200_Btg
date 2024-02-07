@@ -27,19 +27,25 @@
             <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
                 <div class="flex-1">
                     <div class="text-center">
-                        <div class="flex justify-center mx-auto">
+                        <a href="{{ route('home') }}" class="flex justify-center mx-auto">
                             <img class="w-auto h-8 sm:h-10" src="{{ asset('img/logo.png') }}" alt="">
-                        </div>
+                        </a>
                     </div>
 
                     <div class="mt-8">
-                        <form class="" method="GET" action="{{ route('dashboard') }}">
+                        <form class="" method="POST" action="{{ route('login.process') }}">
                             @csrf
 
-                            <x-input name="username" label="Username" />
-                            <x-input type="password" name="password" label="Password" />
+                            <x-home.form-input name="username" label="Username" required="" />
+                            @error("username")
+                            <x-master.form-error message="{{ $message }}" />@enderror
 
-                            <x-button>Sign in</x-button>
+                            <x-home.form-input type="password" name="password" label="Password" required="" />
+                            @error("password")
+                            <x-master.form-error message="{{ $message }}" />@enderror
+
+
+                            <x-home.button>Sign in</x-home.button>
 
                         </form>
 

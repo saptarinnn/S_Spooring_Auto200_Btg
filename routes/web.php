@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => view('home'));
-Route::get('login', fn () => view('guest.login'))->name('login');
+# Home
+Route::get('/', fn () => view('home'))->name('home');
 Route::get('detail-spooring', fn () => view('guest.detail-spooring'))->name('detail-spooring');
 Route::get('success-booking', fn () => view('guest.success-booking'))->name('success-booking');
 
-Route::get('dashboard', fn () => view('master.dashboard'))->name('dashboard');
+Route::middleware('auth')->group(function () {
+    # Dashboard
+    Route::get('dashboard', fn () => view('master.dashboard'))->name('dashboard');
 
-# Users
-Route::get('users', [UserController::class, 'index'])->name('users.index');
-Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('users', [UserController::class, 'store'])->name('users.store');
-Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.delete');
+    # Users
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('users', [UserController::class, 'store'])->name('users.store');
+    Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.delete');
+});
+
+# Authenticate
+require __DIR__ . '/auth.php';

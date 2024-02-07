@@ -29,7 +29,7 @@
                         aria-labelledby="hs-dropdown-with-header">
                         <div class="px-5 py-3 -m-2 bg-gray-100 rounded-t-lg">
                             <p class="text-sm text-gray-500">Signed in as</p>
-                            <p class="text-sm font-medium text-gray-800">james@site.com</p>
+                            <p class="text-sm font-semibold text-gray-800">{{ ucwords(Auth::user()->fullname) }}</p>
                         </div>
                         <div class="py-2 mt-2 first:pt-0 last:pb-0">
                             <a class="flex font-medium items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-red-500"
@@ -37,11 +37,14 @@
                                 <i class="font-medium bx bx-user bx-xs"></i>
                                 Profile
                             </a>
-                            <a class="flex font-medium items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-red-800 hover:bg-red-100 focus:ring-2 focus:ring-red-500"
-                                href="#">
-                                <i class="font-medium bx bx-log-out bx-xs"></i>
-                                Logout
-                            </a>
+                            <form action="{{ route('logout', Auth::user()->id) }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="flex w-full font-medium items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-red-800 hover:bg-red-100 focus:ring-2 focus:ring-red-500">
+                                    <i class="font-medium bx bx-log-out bx-xs"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

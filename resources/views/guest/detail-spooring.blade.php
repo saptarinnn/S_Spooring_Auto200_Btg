@@ -14,23 +14,23 @@
                 <h1 class="mb-2 text-lg font-semibold text-gray-800">Detail Spooring - XYZ123</h1>
 
                 <ul class="mb-5 space-y-3 text-sm">
-                    <x-list title="Nama" value="Saptarino" />
-                    <x-list title="Kendaraan" value="Honda Civic Turbo - (KT 4003 QA)" />
-                    <x-list title="Keterangan" value="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet
+                    <x-home.list title="Nama" value="Saptarino" />
+                    <x-home.list title="Kendaraan" value="Honda Civic Turbo - (KT 4003 QA)" />
+                    <x-home.list title="Keterangan" value="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet
                     nobis qui porro rem architecto deserunt facere quasi est cumque, fugit, ad quae autem ea
                     neque ipsum unde aspernatur hic dicta." />
                 </ul>
 
-                <x-button-modal class="text-white bg-red-600 hover:bg-red-500" id="#detail-spooring-konf">
+                <x-home.button-modal class="text-white bg-red-600 hover:bg-red-500" id="#detail-spooring-konf">
                     Konfirmasi
-                </x-button-modal>
+                </x-home.button-modal>
 
             </div>
         </div>
     </div>
 
     {{-- Modal Konfirmasi Detail Spooring --}}
-    <x-modal id="detail-spooring-konf">
+    <x-home.modal id="detail-spooring-konf">
         <div class="mb-4 text-center">
             <h1 class="block text-2xl font-semibold text-gray-700">Konfirmasi Spooring</h1>
             <p class="mt-1 text-gray-600">
@@ -42,11 +42,11 @@
             @csrf
             <div class="grid">
                 <!-- Form Group -->
-                <x-select name="konf-spooring" label="Konfirmasi Spooring">
+                <x-home.form-select name="konf-spooring" label="Konfirmasi Spooring">
                     <option value="">Pilih Salah Satu</option>
                     <option value="ya">Ya</option>
                     <option value="tidak">Tidak</option>
-                </x-select>
+                </x-home.form-select>
 
                 <div>
                     <label for="keterangan" class="text-sm font-medium text-gray-500">Keterangan</label>
@@ -57,8 +57,8 @@
                 </div>
                 <!-- End Form Group -->
 
-                <x-button>Cari Token</x-button>
+                <x-home.button>Cari Token</x-home.button>
             </div>
         </form>
-    </x-modal>
+    </x-home.modal>
 </x-guest-layout>

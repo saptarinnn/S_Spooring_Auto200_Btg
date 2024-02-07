@@ -19,12 +19,12 @@
                 booking sistem ini juga digunakan untuk monitoring proses dari spooring.</p>
 
             <div class="flex flex-col gap-2 mt-10 md:flex-row">
-                <x-button-modal class="text-white bg-red-600 hover:bg-red-500" id="#booking-spooring">
+                <x-home.button-modal class="text-white bg-red-600 hover:bg-red-500" id="#booking-spooring">
                     Booking Spooring
-                </x-button-modal>
-                <x-button-modal class="text-gray-700 bg-gray-200 hover:bg-gray-100" id="#cek-status-spooring">
+                </x-home.button-modal>
+                <x-home.button-modal class="text-gray-700 bg-gray-200 hover:bg-gray-100" id="#cek-status-spooring">
                     Cek Status Spooring
-                </x-button-modal>
+                </x-home.button-modal>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
     </div>
 
     {{-- Modal Booking Spooring --}}
-    <x-modal id="booking-spooring">
+    <x-home.modal id="booking-spooring">
         <div class="mb-4 text-center">
             <h1 class="block text-2xl font-semibold text-gray-700">Booking Spooring</h1>
             <p class="mt-1 text-gray-600">
@@ -49,21 +49,21 @@
             @csrf
             <div class="grid">
                 <!-- Form Group -->
-                <x-input name="nama" label="Nama Lengkap" />
-                <x-input name="plat" label="Plat Kendaraan" />
-                <x-input name="jenis" label="Jenis Kendaraan" />
-                <x-input type="number" name="no_hp" label="No. Hp" />
-                <x-input type="email" name="email" label="Email" />
-                <x-input type="date" name="tgl_booking" label="Tanggal Booking" />
+                <x-home.form-input name="nama" label="Nama Lengkap" />
+                <x-home.form-input name="plat" label="Plat Kendaraan" />
+                <x-home.form-input name="jenis" label="Jenis Kendaraan" />
+                <x-home.form-input type="number" name="no_hp" label="No. Hp" />
+                <x-home.form-input type="email" name="email" label="Email" />
+                <x-home.form-input type="date" name="tgl_booking" label="Tanggal Booking" />
                 <!-- End Form Group -->
 
-                <x-button>Booking Spooring</x-button>
+                <x-home.button>Booking Spooring</x-home.button>
             </div>
         </form>
-    </x-modal>
+    </x-home.modal>
 
     {{-- Modal Cek Status Spooring --}}
-    <x-modal id="cek-status-spooring">
+    <x-home.modal id="cek-status-spooring">
         <div class="mb-4 text-center">
             <h1 class="block text-2xl font-semibold text-gray-700">Cek Status Spooring</h1>
             <p class="mt-1 text-gray-600">
@@ -75,12 +75,12 @@
             @csrf
             <div class="grid">
                 <!-- Form Group -->
-                <x-input name="token" label="Token Booking" />
+                <x-home.form-input name="token" label="Token Booking" />
                 <!-- End Form Group -->
 
-                <x-button>Cari Token</x-button>
+                <x-home.button>Cari Token</x-home.button>
             </div>
         </form>
-    </x-modal>
+    </x-home.modal>
 
 </x-guest-layout>
