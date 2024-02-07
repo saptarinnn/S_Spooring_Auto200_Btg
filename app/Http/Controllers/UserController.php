@@ -19,7 +19,7 @@ class UserController extends Controller
         return view('master.users.index', [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'users' => User::get(),
+            'users' => User::paginate(10),
         ]);
     }
     public function create()

@@ -34,9 +34,8 @@
             </x-master.table-tbody>
         </x-master.table>
 
-        @if (count($users) > 0)
-        <x-master.table-pagination />
-        @endif
+        {{ $users->links() }}
+
     </section>
 
     @push('scripts')
