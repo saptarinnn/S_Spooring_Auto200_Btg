@@ -40,6 +40,7 @@
 
     @push('scripts')
     <script>
+        /* Delete Button */
         $('.delete-button').click(function (e) {
             e.preventDefault();
             let form =  $(this).closest("form");

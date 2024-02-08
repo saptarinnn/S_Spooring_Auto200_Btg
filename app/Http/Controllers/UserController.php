@@ -62,7 +62,7 @@ class UserController extends Controller
         // Validation
         $request->validate([
             'username' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email,' . $request->id],
+            'email' => ['required', 'email', 'unique:users,email,' . $user],
             'fullname' => ['required'],
         ]);
 
@@ -81,5 +81,16 @@ class UserController extends Controller
     {
         User::findOrFail($user)->delete();
         return back()->with('message', 'Data Berhasil Dihapus.');
+    }
+    public function search(Request $request)
+    {
+        $users = User::all();
+        if ($request->keyword != '') {
+            // $employees = Employee::where('name','LIKE','%'.$request->keyword.'%')->get();
+            $users = User::where('username', 'LIKE', '%'.$request->keyword.'%')->get();
+        }
+        return response()->json([
+            'users' => $users,
+        ]);
     }
 }

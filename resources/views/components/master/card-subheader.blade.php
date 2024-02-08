@@ -4,7 +4,7 @@
             <i class="w-5 h-5 mx-4 text-lg text-gray-400 bx bx-search"></i>
         </span>
 
-        <input type="text" placeholder="Search"
+        <input type="text" placeholder="Search user" id="search" autocomplete="off"
             class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 focus:border-red-400 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40">
     </div>
 
