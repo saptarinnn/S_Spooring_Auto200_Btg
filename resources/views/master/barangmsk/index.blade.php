@@ -3,27 +3,27 @@
 
         <x-master.card-header title="{{ $title }}" subtitle="{{ $subtitle }}" />
 
-        <x-master.card-subheader link="{{ route('users.create') }}" />
+        <x-master.card-subheader link="{{ route('brg-masuk.create') }}" />
 
         <x-master.table>
             <x-master.table-thead>
-                <x-master.table-thead-list name="Username" />
-                <x-master.table-thead-list name="Email" />
-                <x-master.table-thead-list name="Nama Lengkap" />
-                <x-master.table-thead-list name="Login Terakhir" />
+                <x-master.table-thead-list name="Nama Barang" />
+                <x-master.table-thead-list name="Jumlah Barang Masuk" />
+                <x-master.table-thead-list name="Tgl. Barang Masuk" />
+                <x-master.table-thead-list name="Adm. Gudang" />
                 <x-master.table-thead-list name="" />
             </x-master.table-thead>
 
             <x-master.table-tbody>
-                @foreach ($users as $user)
+                @foreach ($barangmasuk as $barangmsk)
                 <tr>
-                    <x-master.table-tbody-list name="{{ ucwords($user->username) }}" />
-                    <x-master.table-tbody-list name="{{ ucwords($user->email) }}" />
-                    <x-master.table-tbody-list name="{{ ucwords($user->fullname) }}" />
+                    <x-master.table-tbody-list name="{{ ucwords($barangmsk->barang->namabarang) }}" />
                     <x-master.table-tbody-list
-                        name="{{ ($user->lastlogin) ? \Carbon\Carbon::parse($user->lastlogin)->format('d M, Y') : '-' }}" />
-                    <x-master.table-tbody-action edit="{{ route('users.edit', $user->id) }}"
-                        delete="{{ route('users.destroy', $user->id) }}" />
+                        name="{{ $barangmsk->jmlhbarangmsk . ' ' . ucwords($barangmsk->barang->satuanbarang) }}" />
+                    <x-master.table-tbody-list
+                        name="{{ \Carbon\Carbon::parse($barangmsk->tglbarangmsk)->format('d M, Y') }}" />
+                    <x-master.table-tbody-list name="{{ ucwords($barangmsk->pengguna->fullname) }}" />
+                    <x-master.table-tbody-action-delete delete="{{ route('brg-masuk.destroy', $barangmsk->id) }}" />
                 </tr>
                 @endforeach
             </x-master.table-tbody>

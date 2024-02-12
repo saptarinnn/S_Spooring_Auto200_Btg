@@ -16,4 +16,49 @@
     .sidebar-list {
         @apply flex items-center px-3 py-1 my-2 text-sm font-medium text-gray-600 rounded-lg gap-x-2 hover:bg-gray-200;
     }
+
+    /* dataTables */
+    #data-table_wrapper {
+        @apply text-sm text-gray-500;
+    }
+
+    #data-table_length,
+    #data-table_filter,
+    #data-table_info,
+    #data-table_paginate {
+        @apply px-6 py-4 font-medium;
+    }
+
+    #data-table_length label,
+    #data-table_filter label{
+        @apply flex items-center gap-2;
+    }
+
+    #data-table_length label select,
+    #data-table_filter label input {
+        @apply p-2 text-sm font-bold border-gray-300 rounded-lg;
+    }
+
+    #data-table_length label select {
+        @apply w-16;
+    }
+    #data-table_filter label input {
+        @apply w-full;
+    }
+
+    #data-table {
+        @apply border-b-0;
+    }
+
+    #data-table thead tr th {
+        @apply p-4 text-gray-600 border-b-2 shadow-none border-b-gray-100;
+    }
+
+    #data-table tbody tr td {
+        @apply p-4 text-gray-600 border-b-2 shadow-none border-b-gray-100;
+    }
+
+    #data-table_paginate .paginate_button.current {
+        @apply rounded-md;
+    }
 }

@@ -8,5 +8,7 @@
     rel="stylesheet">
 {{-- Boxicons --}}
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{{-- DataTables CSS --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 {{-- TailwindCSS --}}
 @vite('resources/css/app.css')

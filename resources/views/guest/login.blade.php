@@ -2,17 +2,10 @@
     <div class="bg-white">
         <div class="flex justify-center h-screen">
             {{-- Background --}}
-            <div class="hidden bg-cover lg:block lg:w-2/3"
-                style="background-image: url(../img/liz-fitch-r7iqwIe32RA-unsplash.jpg)">
-                <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-60">
+            <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url(../img/homepage.jpg)">
+                <div class="flex items-center h-full px-20 bg-gray-500 bg-opacity-60">
                     <div>
-                        <h1 class="text-white"><span class="text-3xl md:text-4xl lg:text-5xl spooring">Spooring
-                            </span><br />
-                            <span class="text-3xl font-extrabold md:text-[2rem] lg:text-[2.5rem]">Auto<span
-                                    class="text-red-600">2000</span>
-                                Bontang
-                            </span>
-                        </h1>
+                        <img class="w-auto h-12 sm:h-16" src="{{ asset('img/logo.png') }}" alt="">
 
                         <p class="max-w-xl mt-3 text-gray-200">
                             Sistem dikembangkan untuk melakukan proses booking Spooring pada <span

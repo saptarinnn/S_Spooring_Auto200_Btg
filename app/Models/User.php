@@ -28,4 +28,9 @@ class User extends Authenticatable
         'lastlogin' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function spooring()
+    {
+        return $this->hasOne(Spooring::class);
+    }
 }

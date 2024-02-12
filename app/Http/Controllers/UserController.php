@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,14 +15,16 @@ class UserController extends Controller
         $this->title = 'pengguna';
         $this->subtitle = 'list pengguna pada aplikasi pelayanan spooring.';
     }
+
     public function index()
     {
         return view('master.users.index', [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'users' => User::paginate(10),
+            'users' => User::oldest('username')->get(),
         ]);
     }
+
     public function create()
     {
         return view('master.users.create', [
@@ -29,6 +32,7 @@ class UserController extends Controller
             'subtitle' => 'Tambah ' . $this->subtitle,
         ]);
     }
+
     public function store(Request $request)
     {
         // Validation
@@ -37,7 +41,6 @@ class UserController extends Controller
             'email' => ['required', 'email', 'unique:users,email'],
             'fullname' => ['required'],
         ]);
-
         // Insert To Database
         $user = new User();
         $user->username = htmlspecialchars($request->username);
@@ -45,10 +48,10 @@ class UserController extends Controller
         $user->email = htmlspecialchars($request->email);
         $user->fullname = htmlspecialchars($request->fullname);
         $user->save();
-
         // Riderect
         return redirect()->route('users.index')->with('message', 'Data Berhasil Disimpan.');
     }
+
     public function edit($user)
     {
         return view('master.users.edit', [
@@ -57,6 +60,7 @@ class UserController extends Controller
             'user' => User::findOrFail($user),
         ]);
     }
+
     public function update(Request $request, $user)
     {
         // Validation
@@ -65,7 +69,6 @@ class UserController extends Controller
             'email' => ['required', 'email', 'unique:users,email,' . $user],
             'fullname' => ['required'],
         ]);
-
         // Update To Database
         $user = User::findOrFail($user);
         $user->username = htmlspecialchars($request->username);
@@ -73,24 +76,15 @@ class UserController extends Controller
         $user->email = htmlspecialchars($request->email);
         $user->fullname = htmlspecialchars($request->fullname);
         $user->save();
-
         // Riderect
         return redirect()->route('users.index')->with('message', 'Data Berhasil Disimpan.');
     }
+
     public function destroy($user)
     {
+        // Find user and delete
         User::findOrFail($user)->delete();
+        // Riderect
         return back()->with('message', 'Data Berhasil Dihapus.');
-    }
-    public function search(Request $request)
-    {
-        $users = User::all();
-        if ($request->keyword != '') {
-            // $employees = Employee::where('name','LIKE','%'.$request->keyword.'%')->get();
-            $users = User::where('username', 'LIKE', '%'.$request->keyword.'%')->get();
-        }
-        return response()->json([
-            'users' => $users,
-        ]);
     }
 }

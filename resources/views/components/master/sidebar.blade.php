@@ -1,5 +1,5 @@
 <div id="application-sidebar"
-    class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800 dark:border-gray-700">
+    class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
     <div class="px-6">
         <a class="flex-none" href="/">
             <img class="w-48 pb-2" src="{{ asset('img/logo.png') }}" alt="">
@@ -18,7 +18,8 @@
 
             <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Pages</li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('homepages*') ? 'bg-gray-200' : '') }}"
+                    href="{{ route('homepages.index') }}">
                     <i class="text-lg bx bx-cog"></i>
                     Homepage
                 </a>
@@ -31,7 +32,8 @@
                 </a>
             </li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('barang*') ? 'bg-gray-200' : '') }}"
+                    href="{{ route('barang.index') }}">
                     <i class="text-lg bx bx-package"></i>
                     Barang
                 </a>
@@ -39,25 +41,29 @@
 
             <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Transaction</li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('booking*') ? 'bg-gray-200' : '') }}"
+                    href="{{ route('booking.index') }}">
                     <i class="text-lg bx bx-bookmark-alt-plus"></i>
                     Booking
                 </a>
             </li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('spooring*') ? 'bg-gray-200' : '') }}"
+                    href="{{ route('spooring.index') }}">
                     <i class="text-lg bx bx-check-double"></i>
-                    Konfirmasi Booking
+                    Konfirmasi Spooring
                 </a>
             </li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('brg-masuk*') ? 'bg-gray-200' : '') }}"
+                    href="{{ route('brg-masuk.index') }}">
                     <i class="text-lg bx bx-archive-in"></i>
                     Barang Masuk
                 </a>
             </li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('brg-keluar*') ? 'bg-gray-200' : '') }}"
+                    href="{{ route('brg-keluar.index') }}">
                     <i class="text-lg bx bx-archive-out"></i>
                     Barang Keluar
                 </a>

@@ -8,10 +8,5 @@
                 <i class='bx-xs bx bx-trash'></i>
             </button>
         </form>
-
-        <a href="{{ $edit }}"
-            class="font-medium text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
-            <i class='bx-xs bx bx-pencil'></i>
-        </a>
     </div>
 </td>

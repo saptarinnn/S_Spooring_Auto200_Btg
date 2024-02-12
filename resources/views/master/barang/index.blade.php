@@ -3,27 +3,24 @@
 
         <x-master.card-header title="{{ $title }}" subtitle="{{ $subtitle }}" />
 
-        <x-master.card-subheader link="{{ route('users.create') }}" />
+        <x-master.card-subheader link="{{ route('barang.create') }}" />
 
         <x-master.table>
             <x-master.table-thead>
-                <x-master.table-thead-list name="Username" />
-                <x-master.table-thead-list name="Email" />
-                <x-master.table-thead-list name="Nama Lengkap" />
-                <x-master.table-thead-list name="Login Terakhir" />
+                <x-master.table-thead-list name="Nama Barang" />
+                <x-master.table-thead-list name="Satuan Barang" />
+                <x-master.table-thead-list name="Jumlah Stock" />
                 <x-master.table-thead-list name="" />
             </x-master.table-thead>
 
             <x-master.table-tbody>
-                @foreach ($users as $user)
+                @foreach ($barangs as $barang)
                 <tr>
-                    <x-master.table-tbody-list name="{{ ucwords($user->username) }}" />
-                    <x-master.table-tbody-list name="{{ ucwords($user->email) }}" />
-                    <x-master.table-tbody-list name="{{ ucwords($user->fullname) }}" />
-                    <x-master.table-tbody-list
-                        name="{{ ($user->lastlogin) ? \Carbon\Carbon::parse($user->lastlogin)->format('d M, Y') : '-' }}" />
-                    <x-master.table-tbody-action edit="{{ route('users.edit', $user->id) }}"
-                        delete="{{ route('users.destroy', $user->id) }}" />
+                    <x-master.table-tbody-list name="{{ ucwords($barang->namabarang) }}" />
+                    <x-master.table-tbody-list name="{{ ucwords($barang->satuanbarang) }}" />
+                    <x-master.table-tbody-list name="{{ ucwords($barang->jumlahstock) }}" />
+                    <x-master.table-tbody-action edit="{{ route('barang.edit', $barang->id) }}"
+                        delete="{{ route('barang.destroy', $barang->id) }}" />
                 </tr>
                 @endforeach
             </x-master.table-tbody>

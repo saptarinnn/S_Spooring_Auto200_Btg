@@ -11,6 +11,9 @@
 
     {{-- Script --}}
     <x-script />
+
+    {{-- Optional Script --}}
+    @stack('scripts')
 </body>
 
 </html>

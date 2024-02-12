@@ -1,7 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\SpooringController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,23 +24,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 # Home
-Route::get('/', fn () => view('home'))->name('home');
-Route::get('detail-spooring', fn () => view('guest.detail-spooring'))->name('detail-spooring');
-Route::get('success-booking', fn () => view('guest.success-booking'))->name('success-booking');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+# Booking
+Route::post('new-booking', [HomeController::class, 'store'])->name('home-booking');
+Route::get('booking-success/{id}', [HomeController::class, 'success'])->name('home-booking-success');
+Route::get('detail-spooring', [HomeController::class, 'detail'])->name('home-booking-detail');
+Route::post('detail-spooring-confirm/{id}', [HomeController::class, 'confirm'])->name('home-booking-confirm');
 
 Route::middleware('auth')->group(function () {
     # Dashboard
     Route::get('dashboard', fn () => view('master.dashboard'))->name('dashboard');
-
-    # Users
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
-    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('users', [UserController::class, 'store'])->name('users.store');
-    Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.delete');
-    # Users Search
-    Route::post('users/search', [UserController::class, 'search'])->name('users.search');
+    # Homepages
+    Route::resource('homepages', HomepageController::class)->only('index', 'store');
+    # Pegguna
+    Route::resource('users', UserController::class)->except('show');
+    # Barang
+    Route::resource('barang', BarangController::class)->except('show');
+    # Booking
+    Route::resource('booking', BookingController::class)->except('edit', 'create', 'store');
+    # Konfirasi Spooring
+    Route::post('spooring-confirm/{id}', [SpooringController::class, 'confirm'])->name('spooring.confirm');
+    Route::resource('spooring', SpooringController::class)->only('index', 'show', 'edit', 'udpate');
+    # Barang Masuk
+    Route::resource('brg-masuk', BarangMasukController::class)->except('show', 'edit', 'update');
+    # Barang Keluar
+    Route::resource('brg-keluar', BarangKeluarController::class)->except('show', 'edit', 'update');
 });
 
 # Authenticate

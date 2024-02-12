@@ -1,19 +1,21 @@
-<x-guest-layout name="Booking Sukses | Spooring Auto2000 Bontang">
+<x-guest-layout title="Booking Sukses | Spooring Auto2000 Bontang">
     {{-- Navigation --}}
     <x-navigation />
 
-    <section class="bg-white dark:bg-gray-900 ">
+    <section class="bg-white">
         <div class="container flex items-center min-h-screen px-6 py-12 mx-auto">
             <div class="flex flex-col items-center max-w-sm mx-auto text-center">
                 <p class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full">
                     <i class="text-green-700 bx bx-check bx-sm"></i>
                 </p>
-                <h1 class="mt-3 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">Booking Spooring
+                <h1 class="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">Booking Spooring
                     Berhasil</h1>
-                <p class="mt-4 text-gray-500 dark:text-gray-400">
-                    Selamat anda berhasil melakukan booking pelayanan spooring. Silahkan cek email anda, untuk melihat
-                    token anda.
+                <p class="my-4 text-gray-500">
+                    Selamat anda berhasil melakukan booking pelayanan spooring. Silahkan cek email anda.
                 </p>
+
+                <span class="text-gray-500">Token anda : </span>
+                <h3 class="text-4xl font-extrabold text-gray-900">{{ $booking->id }}</h3>
 
                 <div class="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
                     <a href="/"
