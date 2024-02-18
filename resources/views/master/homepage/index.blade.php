@@ -8,7 +8,7 @@
                 @csrf
                 <input type="hidden" name="id" value="{{ $homepage->id ?? '' }}">
 
-                <img src="{{ $homepage->head ?  asset('storage/' . $homepage->head) : '' }}" alt=""
+                <img src="{{ (!empty($homepage->head)) ? asset('storage/' . $homepage->head) : '' }}" alt=""
                     class="mt-6 rounded-lg w-80">
                 <x-master.form-file name="head" label="Head" />
                 @error("head")
@@ -19,7 +19,7 @@
                 @error("subhead")
                 <x-master.form-error message="{{ $message }}" />@enderror
 
-                <img src="{{ $homepage->image ?  asset('storage/' . $homepage->image) : '' }}" alt=""
+                <img src="{{ (!empty($homepage->image)) ? asset('storage/' . $homepage->image) : '' }}" alt=""
                     class="mt-6 rounded-lg w-80">
                 <x-master.form-file name="image" label="Image Head" />
                 @error("image")

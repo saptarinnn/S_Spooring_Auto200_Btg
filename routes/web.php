@@ -34,21 +34,33 @@ Route::post('detail-spooring-confirm/{id}', [HomeController::class, 'confirm'])-
 Route::middleware('auth')->group(function () {
     # Dashboard
     Route::get('dashboard', fn () => view('master.dashboard'))->name('dashboard');
-    # Homepages
-    Route::resource('homepages', HomepageController::class)->only('index', 'store');
-    # Pegguna
-    Route::resource('users', UserController::class)->except('show');
-    # Barang
-    Route::resource('barang', BarangController::class)->except('show');
+
     # Booking
     Route::resource('booking', BookingController::class)->except('edit', 'create', 'store');
+
     # Konfirasi Spooring
     Route::post('spooring-confirm/{id}', [SpooringController::class, 'confirm'])->name('spooring.confirm');
     Route::resource('spooring', SpooringController::class)->only('index', 'show', 'edit', 'udpate');
+
+    # Homepages
+    Route::resource('homepages', HomepageController::class)->only('index', 'store');
+
+    # Pegguna
+    Route::resource('users', UserController::class)->except('show');
+
+    # Barang
+    Route::resource('barang', BarangController::class)->except('show');
+
     # Barang Masuk
     Route::resource('brg-masuk', BarangMasukController::class)->except('show', 'edit', 'update');
+
     # Barang Keluar
-    Route::resource('brg-keluar', BarangKeluarController::class)->except('show', 'edit', 'update');
+    Route::resource('brg-keluar', BarangKeluarController::class)->only('index', 'create', 'store', 'destroy');
+});
+
+# Admin
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
 });
 
 # Authenticate

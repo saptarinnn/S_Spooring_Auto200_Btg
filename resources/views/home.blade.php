@@ -6,7 +6,7 @@
     <div
         class="container flex flex-col items-center justify-center min-h-screen gap-6 px-4 pt-24 pb-10 mx-auto sm:px-6 lg:px-8 lg:justify-between lg:flex-row">
         <div class="max-w-lg">
-            <img class="w-auto h-12 sm:h-16" src="{{ $homepage->head ?  asset('storage/' . $homepage->head) : '' }}"
+            <img class="w-auto h-12 sm:h-16" src="{{ (!empty($homepage->head)) ? asset('storage/' . $homepage->head) : '' }}"
                 alt="">
 
             <p class="mt-4 text-base text-gray-500">{{ $homepage->subhead ?? '' }}</p>
@@ -27,7 +27,7 @@
 
         <div class="flex items-center justify-center w-full lg:justify-end">
             <img class="object-cover w-full h-full max-w-lg rounded-md lg:max-w-xl"
-                src="{{ $homepage->image ?  asset('storage/' . $homepage->image) : '' }}" alt="" />
+                src="{{ (!empty($homepage->image)) ?  asset('storage/' . $homepage->image) : '' }}" alt="" />
             <img class="obj{{-- ect-cover w-full h-full max-w-lg rounded-md lg:max-w-xl"
                 src="{{ asset(' --}}img/liz-fitch-r7iqwIe32RA-unsplash.jpg') }}" alt="" />
         </div>

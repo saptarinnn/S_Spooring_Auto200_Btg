@@ -10,7 +10,8 @@
         <ul>
             <li class="mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase">Dashboard</li>
             <li>
-                <a class="sidebar-list" href="#">
+                <a class="sidebar-list {{ (Request::is('dashboard*') ? 'bg-gray-200' : '') }}"
+                href="{{ route('dashboard') }}">
                     <i class="text-lg bx bx-layout"></i>
                     Dashboard
                 </a>
