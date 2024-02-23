@@ -6,6 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -30,6 +31,7 @@ class UserController extends Controller
         return view('master.users.create', [
             'title' => 'Tambah ' . $this->title,
             'subtitle' => 'Tambah ' . $this->subtitle,
+            'roles' => Role::get(),
         ]);
     }
 
@@ -40,6 +42,7 @@ class UserController extends Controller
             'username' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'fullname' => ['required'],
+            'role' => ['required'],
         ]);
         // Insert To Database
         $user = new User();
@@ -48,6 +51,7 @@ class UserController extends Controller
         $user->email = htmlspecialchars($request->email);
         $user->fullname = htmlspecialchars($request->fullname);
         $user->save();
+        $user->assignRole($request->role);
         // Riderect
         return redirect()->route('users.index')->with('message', 'Data Berhasil Disimpan.');
     }

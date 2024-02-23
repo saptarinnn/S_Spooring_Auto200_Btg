@@ -17,6 +17,16 @@
                 @error("fullname")
                 <x-master.form-error message="{{ $message }}" />@enderror
 
+                <x-home.form-select label="Role" name="role">
+                    <option value="">Pilih salah satu ...</option>
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->name }}">{{ ucwords($role->name) }}</option>
+                    @endforeach
+                </x-home.form-select>
+                @error("role")
+                <x-master.form-error message="{{ $message }}" />@enderror
+
+
                 <x-master.form-button cancel="{{ route('users.index') }}" />
             </x-master.form>
         </x-master.card>

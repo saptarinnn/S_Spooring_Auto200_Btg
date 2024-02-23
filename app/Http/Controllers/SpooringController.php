@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Spooring;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -23,7 +24,7 @@ class SpooringController extends Controller
         return view('master.spooring.index', [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'spoorings' => Spooring::with(['booking', 'pengguna'])->get(),
+            'spoorings' => Spooring::with(['booking', 'pengguna'])->where('pengguna_id', Auth::user()->id)->get(),
         ]);
     }
 

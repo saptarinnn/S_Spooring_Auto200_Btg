@@ -22,6 +22,11 @@
                 @error("fullname")
                 <x-master.form-error message="{{ $message }}" />@enderror
 
+                <x-master.form-input label="Role" name="role" required="required" readonly="readonly"
+                value="{{ ucwords($user->getRoleNames()->implode(',')) }}" />
+                @error("role")
+                <x-master.form-error message="{{ $message }}" />@enderror
+
                 <x-master.form-button cancel="{{ route('users.index') }}" />
             </x-master.form>
         </x-master.card>

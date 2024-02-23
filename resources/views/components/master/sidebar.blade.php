@@ -10,73 +10,85 @@
         <ul>
             <li class="mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase">Dashboard</li>
             <li>
-                <a class="sidebar-list {{ (Request::is('dashboard*') ? 'bg-gray-200' : '') }}"
-                href="{{ route('dashboard') }}">
+                <a class="sidebar-list {{ Request::is('dashboard*') ? 'bg-gray-200' : '' }}"
+                    href="{{ route('dashboard') }}">
                     <i class="text-lg bx bx-layout"></i>
                     Dashboard
                 </a>
             </li>
 
             <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Pages</li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('homepages*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('homepages.index') }}">
-                    <i class="text-lg bx bx-cog"></i>
-                    Homepage
-                </a>
-            </li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('users*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('users.index') }}">
-                    <i class="text-lg bx bx-group"></i>
-                    Pengguna
-                </a>
-            </li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('barang*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('barang.index') }}">
-                    <i class="text-lg bx bx-package"></i>
-                    Barang
-                </a>
-            </li>
+            @hasanyrole('admin')
+                <li>
+                    <a class="sidebar-list {{ Request::is('homepages*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('homepages.index') }}">
+                        <i class="text-lg bx bx-cog"></i>
+                        Homepage
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar-list {{ Request::is('users*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('users.index') }}">
+                        <i class="text-lg bx bx-group"></i>
+                        Pengguna
+                    </a>
+                </li>
+            @endhasanyrole
 
-            <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Transaction</li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('booking*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('booking.index') }}">
-                    <i class="text-lg bx bx-bookmark-alt-plus"></i>
-                    Booking
-                </a>
-            </li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('spooring*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('spooring.index') }}">
-                    <i class="text-lg bx bx-check-double"></i>
-                    Konfirmasi Spooring
-                </a>
-            </li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('brg-masuk*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('brg-masuk.index') }}">
-                    <i class="text-lg bx bx-archive-in"></i>
-                    Barang Masuk
-                </a>
-            </li>
-            <li>
-                <a class="sidebar-list {{ (Request::is('brg-keluar*') ? 'bg-gray-200' : '') }}"
-                    href="{{ route('brg-keluar.index') }}">
-                    <i class="text-lg bx bx-archive-out"></i>
-                    Barang Keluar
-                </a>
-            </li>
+            @hasanyrole('admin|gudang|mekanik|kbengkel')
+                <li>
+                    <a class="sidebar-list {{ Request::is('barang*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('barang.index') }}">
+                        <i class="text-lg bx bx-package"></i>
+                        Barang
+                    </a>
+                </li>
+            @endhasanyrole
 
-            <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Report</li>
-            <li>
-                <a class="sidebar-list" href="#">
-                    <i class="text-lg bx bx-file"></i>
-                    Laporan Spooring
-                </a>
-            </li>
+            @hasanyrole('admin|mekanik')
+                <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Transaction</li>
+                <li>
+                    <a class="sidebar-list {{ Request::is('booking*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('booking.index') }}">
+                        <i class="text-lg bx bx-bookmark-alt-plus"></i>
+                        Booking
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar-list {{ Request::is('spooring*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('spooring.index') }}">
+                        <i class="text-lg bx bx-check-double"></i>
+                        Konfirmasi Spooring
+                    </a>
+                </li>
+            @endhasanyrole
+
+            @hasanyrole('admin|gudang|kbengkel')
+                <li>
+                    <a class="sidebar-list {{ Request::is('brg-masuk*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('brg-masuk.index') }}">
+                        <i class="text-lg bx bx-archive-in"></i>
+                        Barang Masuk
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar-list {{ Request::is('brg-keluar*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('brg-keluar.index') }}">
+                        <i class="text-lg bx bx-archive-out"></i>
+                        Barang Keluar
+                    </a>
+                </li>
+            @endhasanyrole
+
+            @hasanyrole('admin|kbengkel')
+                <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Report</li>
+                <li>
+                    <a class="sidebar-list" href="#">
+                        <i class="text-lg bx bx-file"></i>
+                        Laporan Spooring
+                    </a>
+                </li>
+            @endhasanyrole
 
             {{-- <li class="hs-accordion" id="users-accordion">
                 <button type="button"

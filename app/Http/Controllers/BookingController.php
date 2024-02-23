@@ -43,7 +43,7 @@ class BookingController extends Controller
         try {
             $booking->update([
                 'bookingstatus' => '1',
-                'bookingdesc' => 'Booking telah di konfirmasi oleh mekanik, atas nama' . ucwords(auth()->user()->fullname) . ' silahkan menunggu hasil pemeriksaan.',
+                'bookingdesc' => 'Booking telah di konfirmasi oleh mekanik, atas nama ' . ucwords(auth()->user()->fullname) . ' silahkan menunggu hasil pemeriksaan.',
             ]);
             Spooring::create([
                 'id' => Str::random(6),
