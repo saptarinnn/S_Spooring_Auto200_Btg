@@ -83,7 +83,8 @@
             @hasanyrole('admin|kbengkel')
                 <li class="mt-6 mb-1 text-[11px] font-bold tracking-wider text-gray-400 uppercase ">Report</li>
                 <li>
-                    <a class="sidebar-list" href="#">
+                    <a class="sidebar-list {{ Request::is('laporan-spooring*') ? 'bg-gray-200' : '' }}"
+                        href="{{ route('laporan-spooring.index') }}">
                         <i class="text-lg bx bx-file"></i>
                         Laporan Spooring
                     </a>

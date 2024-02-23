@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Spooring;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,10 +22,16 @@ class SpooringController extends Controller
 
     public function index()
     {
+
+        if (Auth::user()->getRoleNames()[0] == 'admin') {
+            $spoorings = Spooring::with(['booking', 'pengguna'])->get();
+        } else {
+            $spoorings =  Spooring::with(['booking', 'pengguna'])->where('pengguna_id', Auth::user()->id)->get();
+        }
         return view('master.spooring.index', [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'spoorings' => Spooring::with(['booking', 'pengguna'])->where('pengguna_id', Auth::user()->id)->get(),
+            'spoorings' => $spoorings,
         ]);
     }
 

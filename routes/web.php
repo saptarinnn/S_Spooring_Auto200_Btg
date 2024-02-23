@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LaporanSpooringController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SpooringController;
 use App\Http\Controllers\SpooringReportController;
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     # Select Spooring Report
     Route::post('dashboard', SpooringReportController::class);
+    # Laporan Spooring
+    Route::get('laporan-spooring', [LaporanSpooringController::class, 'index'])->name('laporan-spooring.index');
+    Route::post('laporan-spooring', [LaporanSpooringController::class, 'print'])->name('laporan-spooring.print');
 });
 
 # Admin
