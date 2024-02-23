@@ -11,7 +11,7 @@
                 <h1 class="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">Booking Spooring
                     Berhasil</h1>
                 <p class="my-4 text-gray-500">
-                    Selamat anda berhasil melakukan booking pelayanan spooring. Silahkan cek email anda.
+                    Selamat anda berhasil melakukan booking pelayanan spooring. Silahkan cek whatsapp anda.
                 </p>
 
                 <span class="text-gray-500">Token anda : </span>
@@ -22,11 +22,6 @@
                         class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto">
                         <i class='bx bx-arrow-back'></i>
                         <span>Kembali</span>
-                    </a>
-
-                    <a href="https://gmail.com/" target="_blank"
-                        class="w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto hover:bg-red-600">
-                        Cek Email
                     </a>
                 </div>
             </div>

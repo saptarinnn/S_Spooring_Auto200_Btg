@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Spooring;
 use App\Models\User;
+use App\Traits\NotificationWA;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,8 @@ use Illuminate\Validation\ValidationException;
 
 class SpooringController extends Controller
 {
+    use NotificationWA;
+
     protected $title, $subtitle;
     public function __construct()
     {
@@ -90,6 +93,7 @@ class SpooringController extends Controller
             }
             DB::commit();
             # redirect
+            $this->pushNotification($booking->nohp, ucwords($request->spooringdesc));
             return to_route('spooring.index')->with('message', 'Data berhasil dikonfirmasi.');
         } catch (\Throwable $th) {
             DB::rollback();
@@ -121,6 +125,7 @@ class SpooringController extends Controller
 
             DB::commit();
             # redirect
+            $this->pushNotification($booking->nohp, ucwords($request->keterangan));
             return to_route('spooring.index')->with('message', 'Data berhasil dikonfirmasi.');
         } catch (\Throwable $th) {
             DB::rollback();

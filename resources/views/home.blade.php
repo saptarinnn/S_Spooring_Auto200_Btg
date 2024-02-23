@@ -6,8 +6,8 @@
     <div
         class="container flex flex-col items-center justify-center min-h-screen gap-6 px-4 pt-24 pb-10 mx-auto sm:px-6 lg:px-8 lg:justify-between lg:flex-row">
         <div class="max-w-lg">
-            <img class="w-auto h-12 sm:h-16" src="{{ (!empty($homepage->head)) ? asset('storage/' . $homepage->head) : '' }}"
-                alt="">
+            <img class="w-auto h-12 sm:h-16"
+                src="{{ !empty($homepage->head) ? asset('storage/' . $homepage->head) : '' }}" alt="">
 
             <p class="mt-4 text-base text-gray-500">{{ $homepage->subhead ?? '' }}</p>
             {{-- <p class="mt-4 text-base text-gray-500">Sistem
@@ -27,7 +27,7 @@
 
         <div class="flex items-center justify-center w-full lg:justify-end">
             <img class="object-cover w-full h-full max-w-lg rounded-md lg:max-w-xl"
-                src="{{ (!empty($homepage->image)) ?  asset('storage/' . $homepage->image) : '' }}" alt="" />
+                src="{{ !empty($homepage->image) ? asset('storage/' . $homepage->image) : '' }}" alt="" />
             <img class="obj{{-- ect-cover w-full h-full max-w-lg rounded-md lg:max-w-xl"
                 src="{{ asset(' --}}img/liz-fitch-r7iqwIe32RA-unsplash.jpg') }}" alt="" />
         </div>
@@ -49,28 +49,34 @@
             <div class="grid">
                 <!-- Form Group -->
                 <x-home.form-input name="fullname" label="Nama Lengkap" required="required" />
-                @error("fullname")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                @error('fullname')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
 
                 <x-home.form-input name="plat" label="Plat Kendaraan" required="required" />
-                @error("plat")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                @error('plat')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
 
                 <x-home.form-input name="type" label="Jenis Kendaraan" required="required" />
-                @error("type")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                @error('type')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
 
-                <x-home.form-input type="number" name="nohp" label="No. Hp" required="required" />
-                @error("nohp")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                <x-home.form-input type="number" name="nohp" label="No. Whatsapp" required="required" />
+                @error('nohp')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
 
                 <x-home.form-input type="email" name="email" label="Email" required="required" />
-                @error("email")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                @error('email')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
 
                 <x-home.form-input type="date" name="bookingdate" label="Tanggal Booking" required="required" />
-                @error("bookingdate")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                @error('bookingdate')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
                 <!-- End Form Group -->
 
                 <x-home.button>Booking Spooring</x-home.button>
@@ -92,8 +98,9 @@
             <div class="grid">
                 <!-- Form Group -->
                 <x-home.form-input name="token" label="Token Booking" />
-                @error("token")
-                <x-master.form-error message="{{ $message }}" />@enderror
+                @error('token')
+                    <x-master.form-error message="{{ $message }}" />
+                @enderror
                 <!-- End Form Group -->
 
                 <x-home.button>Cari Token</x-home.button>
@@ -102,24 +109,24 @@
     </x-home.modal>
 
     @push('scripts')
-    @if(session()->has('error'))
-    <script>
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        Toast.fire({
-            icon: "error",
-            title: `{{ session()->get('error') }}`,
-        });
-    </script>
-    @endif
+        @if (session()->has('error'))
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: `{{ session()->get('error') }}`,
+                });
+            </script>
+        @endif
     @endpush
 </x-guest-layout>

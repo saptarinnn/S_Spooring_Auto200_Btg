@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Spooring;
+use App\Traits\NotificationWA;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
+    use NotificationWA;
+
     protected $title, $subtitle;
     public function __construct()
     {
@@ -45,16 +48,17 @@ class BookingController extends Controller
                 'bookingstatus' => '1',
                 'bookingdesc' => 'Booking telah di konfirmasi oleh mekanik, atas nama ' . ucwords(auth()->user()->fullname) . ' silahkan menunggu hasil pemeriksaan.',
             ]);
-            Spooring::create([
+            $spooring = Spooring::create([
                 'id' => Str::random(6),
                 'booking_id' => $booking->id,
                 'pengguna_id' => auth()->user()->id,
                 'spooringdate' => \Carbon\Carbon::now(),
                 'spooringstatus' => '0',
-                'spooringdesc' => 'Sedang dilakukan proses pemeriksaan kendaraan.'
+                'spooringdesc' => 'Sedang dilakukan proses pemeriksaan kendaraan'
             ]);
             DB::commit();
             # redirect
+            $this->pushNotification($booking->nohp, $spooring->spooringdesc . ' oleh mekanik: ' . ucwords($spooring->pengguna->fullname));
             return to_route('spooring.index')->with('message', 'Data berhasil dikonfirmasi!');
         } catch (\Throwable $th) {
             DB::rollback();

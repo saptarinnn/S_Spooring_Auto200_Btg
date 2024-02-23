@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Homepage;
-use App\Models\Spooring;
+use App\Traits\NotificationWA;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class HomeController extends Controller
 {
+    use NotificationWA;
+
     public function index()
     {
         return view('home', [
@@ -47,6 +48,7 @@ class HomeController extends Controller
             ]);
             DB::commit();
             # redirect
+            $this->pushNotification($request->nohp, $booking->bookingdesc . ' Kode booking anda adalah ' . $booking->id);
             return to_route('home-booking-success', $booking->id)->with('message', 'Data Berhasil Disimpan');
         } catch (\Throwable $th) {
             # redirect
@@ -101,6 +103,7 @@ class HomeController extends Controller
             }
             DB::commit();
             # redirect
+            $this->pushNotification($booking->nohp, ucwords($booking->bookingdesc));
             return back()->with('message', 'Data Berhasil Dikirim');
         } catch (\Throwable $th) {
             # redirect
